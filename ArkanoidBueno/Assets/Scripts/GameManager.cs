@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
 
     public int lives = 3; // Número de vidas
     public int score = 0;
-    public TMP_Text livesText;
-    public TMP_Text scoreText;
+    public int highScore = 0;
+    
+    //public TMP_Text livesText;
+    //public TMP_Text scoreText;
+    //public TMP_Text highScoreText;
 
     Scene currentScene;
     private string sceneName;
@@ -21,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -29,14 +32,18 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()
     {
         totalBlocks = GameObject.FindGameObjectsWithTag("Block").Length + GameObject.FindGameObjectsWithTag("Block2").Length;
 
-        UpdateLivesText();
-        UpdateScoreText();
+        FindObjectOfType<TextManager>().UpdateLivesText();
+        FindObjectOfType<TextManager>().UpdateScoreText();
+        FindObjectOfType<TextManager>().UpdateHighScoreText();
+
         BlockDestroyed();
 
         Scene currentScene = SceneManager.GetActiveScene();
@@ -47,23 +54,25 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("totalBlocks: " + totalBlocks);
+        Debug.Log("totalblocks: " + totalBlocks);
     }
 
     public void BlockDestroyed()
     {
         totalBlocks--;
-        if(totalBlocks <= 1)
+        
+        if (totalBlocks <= 1)
         {
             LoadNextLevel();
+            //totalBlocks = GameObject.FindGameObjectsWithTag("Block").Length + GameObject.FindGameObjectsWithTag("Block2").Length;
+            totalBlocks = 15;
         }
-
     }
 
     public void DecreaseLife()
     {
         lives--; // Disminuye el contador de vidas
-        UpdateLivesText(); // Actualiza el texto en el Canvas
+        FindObjectOfType<TextManager>().UpdateLivesText(); // Actualiza el texto en el Canvas
 
         if (lives <= 0)
         {
@@ -74,18 +83,31 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points) // Método para aumentar la puntuación
     {
         score += points; // Aumenta la puntuación
-        UpdateScoreText(); // Actualiza el texto de la puntuación
+        FindObjectOfType<TextManager>().UpdateScoreText(); // Actualiza el texto de la puntuación
+
+        if (highScore <= score)
+        {
+            highScore = score;
+            FindObjectOfType<TextManager>().UpdateHighScoreText();
+        }
+    
     }
 
-    void UpdateLivesText()
-    {
-        livesText.text = "Lives: " + lives; // Actualiza el texto del UI
-    }
 
-    void UpdateScoreText()
-    {
-        scoreText.text = "Score: " + score; // Actualiza el texto de la puntuación
-    }
+    //void UpdateLivesText()
+    //{
+    //    livesText.text = "Lives: " + lives; // Actualiza el texto del UI
+    //}
+
+    //void UpdateScoreText()
+    //{
+    //    scoreText.text = "Score: " + score; // Actualiza el texto de la puntuación
+    //}
+
+    //void UpdateHighScoreText()
+    //{
+    //    highScoreText.text = "High Score: " + highScore; // Actualiza el texto de la puntuación
+    //}
 
     void GameOver()
     {

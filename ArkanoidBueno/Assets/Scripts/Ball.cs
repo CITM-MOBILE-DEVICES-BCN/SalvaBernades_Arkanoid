@@ -47,7 +47,8 @@ public class Ball : MonoBehaviour
         {
             Destroy(collision.gameObject);
             GameManager.Instance.BlockDestroyed();
-            gameManager.AddScore(100);
+            //gameManager.AddScore(100);
+            FindObjectOfType<GameManager>().AddScore(100);
             ballRb.velocity *= velocityMultiplier;
             
         }
@@ -59,7 +60,7 @@ public class Ball : MonoBehaviour
 
       
 
-        //VelocityFixed();
+        VelocityFixed();
 
     }
     private void VelocityFixed()

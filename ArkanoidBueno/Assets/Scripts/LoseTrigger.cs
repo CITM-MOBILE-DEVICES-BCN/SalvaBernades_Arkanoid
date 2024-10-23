@@ -44,7 +44,8 @@ public class LoseTrigger : MonoBehaviour
             // Iniciamos nuevamente el lanzamiento con un retraso de 2 segundos
             StartCoroutine(ball.ReleaseBallAfterDelay(2f));
 
-            gameManager.DecreaseLife();
+            //gameManager.DecreaseLife();
+            FindObjectOfType<GameManager>().DecreaseLife();
 
             PlayDeathSound();
 
