@@ -47,6 +47,8 @@ public class LoseTrigger : MonoBehaviour
             //gameManager.DecreaseLife();
             FindObjectOfType<GameManager>().DecreaseLife();
 
+            
+
             PlayDeathSound();
 
             triggerTimes++;

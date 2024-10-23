@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public int lives = 3; // Número de vidas
     public int score = 0;
     public int highScore = 0;
-    
+
     //public TMP_Text livesText;
     //public TMP_Text scoreText;
     //public TMP_Text highScoreText;
@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
         if (totalBlocks <= 1)
         {
             LoadNextLevel();
-            //totalBlocks = GameObject.FindGameObjectsWithTag("Block").Length + GameObject.FindGameObjectsWithTag("Block2").Length;
-            totalBlocks = 15;
+            totalBlocks = GameObject.FindGameObjectsWithTag("Block").Length + GameObject.FindGameObjectsWithTag("Block2").Length;
+            
         }
     }
 
