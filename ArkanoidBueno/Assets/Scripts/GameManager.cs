@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int highScore = 0;
 
-    //public TMP_Text livesText;
-    //public TMP_Text scoreText;
-    //public TMP_Text highScoreText;
 
     Scene currentScene;
     private string sceneName;
@@ -55,6 +52,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         Debug.Log("totalblocks: " + totalBlocks);
+        Debug.Log("scena actual " + sceneName);
     }
 
     public void BlockDestroyed()
@@ -64,8 +62,6 @@ public class GameManager : MonoBehaviour
         if (totalBlocks <= 1)
         {
             LoadNextLevel();
-            totalBlocks = GameObject.FindGameObjectsWithTag("Block").Length + GameObject.FindGameObjectsWithTag("Block2").Length;
-            
         }
     }
 
@@ -93,22 +89,6 @@ public class GameManager : MonoBehaviour
     
     }
 
-
-    //void UpdateLivesText()
-    //{
-    //    livesText.text = "Lives: " + lives; // Actualiza el texto del UI
-    //}
-
-    //void UpdateScoreText()
-    //{
-    //    scoreText.text = "Score: " + score; // Actualiza el texto de la puntuación
-    //}
-
-    //void UpdateHighScoreText()
-    //{
-    //    highScoreText.text = "High Score: " + highScore; // Actualiza el texto de la puntuación
-    //}
-
     void GameOver()
     {
         SceneManager.LoadScene("GameOver");
@@ -120,10 +100,14 @@ public class GameManager : MonoBehaviour
         if(sceneName == "Lvl1")
         {
             SceneManager.LoadScene("Lvl2");
+            totalBlocks = 15;
         }
         else if(sceneName == "Lvl2")
         {
             SceneManager.LoadScene("Lvl1");
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            totalBlocks = 15;
         }
         
     }

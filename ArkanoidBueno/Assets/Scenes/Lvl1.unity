@@ -1125,6 +1125,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3523303073085772292, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523303073085772292, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523303073085772292, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523303073085772292, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523303073085772292, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523303073085772292, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.9607844
+      objectReference: {fileID: 0}
     - target: {fileID: 5594450925082707595, guid: bc3187320e307cd4c8ef9d2eff4ea885, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
